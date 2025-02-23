@@ -1,0 +1,154 @@
+/* Styling for the modal title */
+.modal-title-custom {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 21.79px;
+    letter-spacing: 0%;
+    color: #000;
+}
+
+/* Styling for the modal header */
+.modal-header-custom {
+    background: #f8f9fa;
+    padding: 10px 15px;
+    border-bottom: 1px solid #dee2e6;
+    display: flex;
+    align-items: center;
+}
+
+/* Container for the informative text */
+.info-text {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Information icon */
+.info-icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* Informative text */
+.info-description {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19.07px;
+    letter-spacing: 0%;
+    color: #6c757d;
+    margin: 0;
+}
+
+/* Modal size */
+.modal-dialog {
+    max-width: 868px !important;
+}
+
+.modal-content {
+    height: 388px;
+}
+
+/* Form labels */
+.custom-label {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 21.79px;
+    letter-spacing: 0%;
+    color: #323338;
+}
+
+/* Styling for inputs and selects */
+.custom-input,
+.custom-select {
+    background-color: #F5F5F7 !important; /* Ensure color is applied */
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: #323338;
+    border: 1px solid #D1D1D6;
+    border-radius: 4px;
+    padding: 8px;
+    width: 100%;
+}
+
+/* Remove default styles for select */
+.custom-select {
+    appearance: none;
+    cursor: pointer;
+}
+
+/* When an input or select is focused */
+.custom-input:focus,
+.custom-select:focus {
+    background-color: #F5F5F7 !important; /* Retain color when focused */
+    outline: none;
+    border-color: #A1A1A6;
+    box-shadow: none;
+}
+
+/* Ensure Bootstrap inputs do not override this style */
+.form-control,
+.form-select {
+    background-color: #F5F5F7 !important;
+}
+
+/* Styling for modal buttons */
+.modal-footer .btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Place the icon on the right */
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19.07px;
+    letter-spacing: 0%;
+    padding: 8px 16px;
+    width: auto; /* Suitable size */
+}
+
+/* "Cancel Changes" button */
+.btn-cancel {
+    background-color: #FE4C4A !important;
+    border-color: #FE4C4A !important;
+    color: white !important;
+}
+
+/* "Save Changes" button */
+.btn-save {
+    background-color: #7AC14D !important;
+    border-color: #7AC14D !important;
+    color: white !important;
+}
+
+/* Styling for icons inside buttons */
+.btn-cancel svg,
+.btn-save svg {
+    margin-left: 8px; /* Place the icon on the right */
+}
+
+/* Hover effect for buttons */
+.btn-cancel:hover {
+    background-color: #E04342 !important;
+}
+
+.btn-save:hover {
+    background-color: #69A93F !important;
+}
+
+.custom-row {
+    display: flex;
+    gap: 20px; /* Add 20px spacing between fields */
+}
+
+.custom-select-category {
+    width: 564px !important;
+    height: 56px !important;
+}
+
+.custom-select-status {
+    width: 255px !important;
+    height: 56px !important;
+}

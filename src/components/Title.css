@@ -1,0 +1,46 @@
+/* Styling for the title container */
+.title-container {
+  width: 100%;
+  max-width: 1900px;
+  height: 45px;
+  background-color: #f8f8fa;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Positions the title on the left */
+  padding: 10px 20px; /* Adds left padding to prevent it from sticking */
+  margin: 20px auto; /* Centers it horizontally with top/bottom spacing */
+}
+
+/* Styling for the text */
+.title-text {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 21.79px;
+  color: #000;
+  margin: 0;
+}
+
+/* Responsiveness for smaller screens */
+@media (max-width: 768px) {
+  .title-container {
+      height: auto;
+      padding: 15px 20px; /* Adds left padding to keep it aligned */
+  }
+
+  .title-text {
+      font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title-container {
+      padding: 10px 15px;
+  }
+
+  .title-text {
+      font-size: 12px;
+  }
+}
