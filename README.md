@@ -3,9 +3,14 @@
 This project is an inventory management system built with React and Redux. It allows you to create and manage data for jobsites and store their information for further use.
 
 ## Main functionalities
-- Add a new jobsite.
+- Add a new jobsite: Users can add a new jobsite by filling out a form in the modal window. The form allows input for jobsite details such as the name, status, and category. Once the form is submitted, the new jobsite is added to the list and displayed in the table.
 - Display a list of jobs with relevant information.
-- Ability to delete and edit jobsite information.
+- 
+  - **Status Management**: Users can change the status of each jobsite (e.g., "On Hold", "Completed", "On Road") directly from the table. When a jobsite's status is updated, the change is reflected in the **Header**, which displays statistics on the current statuses of all jobs. This provides a quick overview of the jobsite statuses, such as how many are "On Hold", "Completed", or "On Road".
+- **Inventory Interface**: After clicking on a jobsite name in the table, the application displays a new page dedicated to the inventory, showing details such as the jobsite's name and category.
+- **Category-based Table View**: When clicking on a category, a table is displayed showing data specific to that category. This allows users to view detailed information for each category associated with the jobsite.
+- **Edit Table Data**: By clicking on any field within the displayed table, a modal opens, enabling users to modify the table's data. These changes can then be saved back to the table, updating the data accordingly.
+
 
 ## Technologies used
 - React
