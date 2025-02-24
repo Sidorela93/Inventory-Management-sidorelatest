@@ -1,12 +1,10 @@
-import React, { useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import React, { useState } from "react";  
 import { Modal, Button, Form } from "react-bootstrap";
+import { useSelector } from "react-redux";
+import { useParams, useNavigate } from "react-router-dom";
+import infoIcon from "../assets/img/Frame.png"; 
 import Coreimg from "../assets/img/core.png"; // Importing the image
-import "./ModalStyles.css"; 
-import infoIcon from "../assets/img/Frame.png";
-
-
+import "./ModalStyles.css";  // 
 const InventoryPage = () => {
   const { jobsiteId } = useParams();
   const navigate = useNavigate();
@@ -24,7 +22,6 @@ const InventoryPage = () => {
     { id: 5, item: "A68446", quantity: 52, desc: "Lorem ipsum dolor sit amet.", notes: "Lorem ipsum dolor sit amet." },
   ]);
 
-  // Modal
   const [showModal, setShowModal] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
 
@@ -40,7 +37,6 @@ const InventoryPage = () => {
     setShowModal(false);
   };
 
-  // Filtering based on searchTerm
   const filteredData = data.filter(
     (row) =>
       row.item.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -55,14 +51,17 @@ const InventoryPage = () => {
   return (
     <div className="container-fluid p-4" style={{ backgroundColor: "#f8f9fa", minHeight: "100vh" }}>
       <div className="row">
-        
         {/* Left Sidebar - Categories */}
         <div className="col-12 col-md-4 col-lg-3">
           <div className="p-3 border bg-white shadow-sm rounded">
-            <h5 className="mb-3" style={{ fontWeight: "bold", color: "#323338",  fontFamily: "Open Sans", fontSize: "16px",  }}>{jobsite.name}</h5>
+            <h5 className="mb-3">{jobsite.name}</h5>
             {jobsite.category && (
               <button
-                className="btn btn-outline-secondary w-100 text-start shadow-sm"
+                className={`btn w-100 text-start shadow-sm ${selectedCategory === jobsite.category ? 'btn-success' : 'btn-outline-secondary'}`}
+                style={{
+                  backgroundColor: selectedCategory === jobsite.category ? '#67AA3C' : '',
+                  color: selectedCategory === jobsite.category ? 'white' : '',
+                }}
                 onClick={() => setSelectedCategory(jobsite.category)}
               >
                 {jobsite.category}
@@ -82,13 +81,18 @@ const InventoryPage = () => {
 
               {/* Search Input */}
               <input
-                type="text"
-                className="form-control rounded-pill px-3"
-                style={{ maxWidth: "250px", fontSize: "14px", padding: "6px 12px" }}
-                placeholder="🔍 Search..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-              />
+  type="text"
+  className="form-control px-3"
+  style={{
+    maxWidth: "250px",
+    fontSize: "14px",
+    padding: "6px 12px",
+    borderRadius: "0", 
+  }}
+  placeholder="🔍 Search..."
+  value={searchTerm}
+  onChange={(e) => setSearchTerm(e.target.value)}
+/>
             </div>
 
             {/* Show Table if Category is Selected */}
@@ -126,7 +130,7 @@ const InventoryPage = () => {
             ) : (
               <div className="text-center p-5">
                 <img src={Coreimg} alt="No Category" width="80" />
-                <h6 className="mt-2">No Category Selected</h6>
+                <h6>No Category Selected</h6>
                 <p className="text-muted">Please select a category on your left to proceed.</p>
               </div>
             )}
@@ -134,111 +138,95 @@ const InventoryPage = () => {
         </div>
       </div>
 
-    {/* Modal for Editing */}
-{selectedItem && (
-  <Modal show={showModal} onHide={() => setShowModal(false)} centered className="custom-modal">
-    <Modal.Header closeButton>
-  <Modal.Title 
-    style={{
-      fontFamily: "Open Sans", 
-      fontWeight: 600, 
-      fontSize: "16px", 
-      lineHeight: "21.79px", 
-      letterSpacing: "0%"
-    }}
-  >
-    Title
-  </Modal.Title>
-</Modal.Header>
+      {/* Modal for Editing */}
+      {selectedItem && (
+        <Modal show={showModal} onHide={() => setShowModal(false)} centered className="custom-modal">
+          <Modal.Header closeButton>
+            <Modal.Title>Title</Modal.Title>
+          </Modal.Header>
 
-    <Modal.Body>
-      {/* Informative Text with Icon */}
-      <div className="d-flex align-items-center bg-light p-2 rounded mb-3">
-        <img src={infoIcon} alt="Info" className="me-2" style={{ width: "20px", height: "20px" }} />
-        <span className="text-muted">Informative piece of text that can be used regarding this modal.</span>
-      </div>
+          <Modal.Body>
+            {/* Informative Text with Icon */}
+            <div className="d-flex align-items-center bg-light p-2 rounded mb-3">
+              <img src={infoIcon} alt="Info" className="me-2" style={{ width: "20px", height: "20px" }} />
+              <span className="text-muted">Informative piece of text that can be used regarding this modal.</span>
+            </div>
 
-      <Form>
-        <div className="row">
-          {/* Item Selection */}
-          <Form.Group className="mb-3 col-md-6">
-            <Form.Label>Item</Form.Label>
-            <Form.Select
-              className="form-control"
-              value={selectedItem?.item || ""}
-              onChange={(e) =>
-                setSelectedItem({ ...selectedItem, item: e.target.value })
-              }
-            >
-              <option value="" disabled>Search & Select item</option>
-              {data.map((row) => (
-                <option key={row.id} value={row.item}>
-                  {row.item}
-                </option>
-              ))}
-            </Form.Select>
-          </Form.Group>
+            <Form>
+              <div className="row">
+                {/* Item Selection */}
+                <Form.Group className="mb-3 col-md-6">
+                  <Form.Label>Item</Form.Label>
+                  <Form.Select
+                    className="form-control"
+                    value={selectedItem?.item || ""}
+                    onChange={(e) =>
+                      setSelectedItem({ ...selectedItem, item: e.target.value })
+                    }
+                  >
+                    <option value="" disabled>Search & Select item</option>
+                    {data.map((row) => (
+                      <option key={row.id} value={row.item}>
+                        {row.item}
+                      </option>
+                    ))}
+                  </Form.Select>
+                </Form.Group>
 
-          {/* Quantity Input */}
-          <Form.Group className="mb-3 col-md-6">
-            <Form.Label>Quantity</Form.Label>
-            <Form.Control
-              type="number"
-              className="form-control"
-              placeholder="Set Quantity"
-              value={selectedItem?.quantity || ""}
-              onChange={(e) =>
-                setSelectedItem({ ...selectedItem, quantity: e.target.value })
-              }
-            />
-          </Form.Group>
-        </div>
+                {/* Quantity Input */}
+                <Form.Group className="mb-3 col-md-6">
+                  <Form.Label>Quantity</Form.Label>
+                  <Form.Control
+                    type="number"
+                    className="form-control"
+                    placeholder="Set Quantity"
+                    value={selectedItem?.quantity || ""}
+                    onChange={(e) =>
+                      setSelectedItem({ ...selectedItem, quantity: e.target.value })
+                    }
+                  />
+                </Form.Group>
+              </div>
 
-        {/* Description (1st row) */}
-        <Form.Group className="mb-3">
-          <Form.Label>Description</Form.Label>
-          <Form.Control
-            as="textarea"
-            rows={3}
-            className="form-control"
-            placeholder="Type the description..."
-            value={selectedItem?.desc || ""}
-            onChange={(e) =>
-              setSelectedItem({ ...selectedItem, desc: e.target.value })
-            }
-          />
-        </Form.Group>
+              {/* Description (1st row) */}
+              <Form.Group className="mb-3">
+                <Form.Label>Description</Form.Label>
+                <Form.Control
+                  as="textarea"
+                  rows={3}
+                  className="form-control"
+                  placeholder="Type the description..."
+                  value={selectedItem?.desc || ""}
+                  onChange={(e) =>
+                    setSelectedItem({ ...selectedItem, desc: e.target.value })
+                  }
+                />
+              </Form.Group>
 
-        {/* Notes (2nd row) */}
-        <Form.Group className="mb-3">
-          <Form.Label>Notes</Form.Label>
-          <Form.Control
-            as="textarea"
-            rows={3}
-            className="form-control"
-            placeholder="Type a note..."
-            value={selectedItem?.notes || ""}
-            onChange={(e) =>
-              setSelectedItem({ ...selectedItem, notes: e.target.value })
-            }
-          />
-        </Form.Group>
-      </Form>
-    </Modal.Body>
+              {/* Notes (2nd row) */}
+              <Form.Group className="mb-3">
+                <Form.Label>Notes</Form.Label>
+                <Form.Control
+                  as="textarea"
+                  rows={3}
+                  className="form-control"
+                  placeholder="Type a note..."
+                  value={selectedItem?.notes || ""}
+                  onChange={(e) =>
+                    setSelectedItem({ ...selectedItem, notes: e.target.value })
+                  }
+                />
+              </Form.Group>
+            </Form>
+          </Modal.Body>
 
-    <Modal.Footer>
-      <Button 
-        variant="success"
-        className="d-flex align-items-center"
-        onClick={handleSaveChanges}
-      >
-        Save Changes ✔
-      </Button>
-    </Modal.Footer>
-  </Modal>
-)}
-
-      
+          <Modal.Footer>
+            <Button variant="success" onClick={handleSaveChanges}>
+              Save Changes ✔
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      )}
     </div>
   );
 };

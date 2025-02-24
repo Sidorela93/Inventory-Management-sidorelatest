@@ -1,4 +1,4 @@
-import React from "react"; 
+import React from "react";
 import { Row, Col } from "react-bootstrap";
 import SearchBar from "./SearchBar";
 import CreateJobsiteButton from "./CreateJobsiteButton";
@@ -8,22 +8,26 @@ function JobsiteHeader() {
   return (
     <div className="container mt-3">
       <Row className="align-items-center">
-        {/* Informational image and accompanying text */}
-        <Col xs={4} className="d-flex align-items-center">
+        {/* Informational image and accompanying text in the first half */}
+        <Col xs={12} md={6} className="d-flex align-items-center">
           <img src={infoIcon} alt="Info Icon" className="info-icon me-2" /> {/* Image */}
           <span className="text-muted">
             Informative piece of text that can be used regarding this modal.
           </span>
         </Col>
 
-        {/* Search field */}
-        <Col xs={5}>
-          <SearchBar />
-        </Col>
+        {/* Search field and Create button in the second half */}
+        <Col xs={12} md={6} className="d-flex justify-content-between align-items-center">
+          <div style={{ width: '492px' }}>
+            <SearchBar />
+          </div>
 
-        {/* "Create" button */}
-        <Col xs={3} className="text-end">
-          <CreateJobsiteButton />
+          {/* Add a small gap between the buttons */}
+          <div style={{ width: '10px' }}></div>
+
+          <div style={{ width: '150px' }}>
+            <CreateJobsiteButton />
+          </div>
         </Col>
       </Row>
     </div>

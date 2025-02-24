@@ -29,16 +29,31 @@ const JobsiteTable = () => {
     <table className="table table-striped text-center">
       <thead>
         <tr>
-          <th>Jobsite Name</th>
-          <th>Status</th>
+          <th style={{ fontFamily: "Open Sans", fontWeight: "600", fontSize: "16px", lineHeight: "21.79px", letterSpacing: "0%" }}>
+            Jobsite Name
+          </th>
+          <th style={{ fontFamily: "Open Sans", fontWeight: "600", fontSize: "16px", lineHeight: "21.79px", letterSpacing: "0%" }}>
+            Status
+          </th>
         </tr>
       </thead>
       <tbody>
         {filteredJobsites.map((job) => (
           <tr key={job.id}>
             <td>
-              {/* LINK to open the inventory  */}
-              <Link to={`/inventory/${job.id}`} style={{ textDecoration: "none", color: "black" }}>
+              {/* LINK to open the inventory */}
+              <Link 
+                to={`/inventory/${job.id}`} 
+                style={{ 
+                  textDecoration: "none", 
+                  fontFamily: "Open Sans", 
+                  fontWeight: "600", 
+                  fontSize: "14px", 
+                  lineHeight: "19.07px", 
+                  letterSpacing: "0%", 
+                  color: "#1264A3" 
+                }}
+              >
                 {job.name}
               </Link>
             </td>

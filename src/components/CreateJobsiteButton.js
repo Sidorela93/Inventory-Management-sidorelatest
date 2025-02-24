@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Modal, Form, Row, Col } from "react-bootstrap";
+import { Button, Modal, Form } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { addJobsite } from "../redux/jobsiteSlice";
 import { FaTimes, FaCheck } from "react-icons/fa"; 
@@ -30,6 +30,12 @@ function CreateJobsiteButton() {
     };
 
     dispatch(addJobsite(newJobsite));
+    
+    // Reset the input fields after adding the jobsite
+    setName("");
+    setStatus("");
+    setCategory("");
+    
     handleClose(); 
   };
 
