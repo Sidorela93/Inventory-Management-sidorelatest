@@ -19,8 +19,10 @@ To clone and test the project on your machine:
 
 1.Clone the repo
 git clone https://github.com/sidorela93/Inventory-Management-sidorelatest.git
+
 2.Install dependencies:
 npm install
+
 3.Start the project:   
 npm start
 
